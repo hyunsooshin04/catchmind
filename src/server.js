@@ -4,11 +4,7 @@ import socketIO from "socket.io";
 import logger from "morgan";
 
 const app = express();
-const PORT = 5000;
-
-// app.listen(PORT, () => {
-//     console.log('Server Running : http://localhost:${PORT}');
-// })
+const PORT = 4000;
 
 app.set("view engine", "pug");
 app.set("views", join(__dirname, "views"));
@@ -25,6 +21,18 @@ const io = socketIO(server);
 
 io.on("connection", () => console.log("somebody connected"));
 
+function send(Message) {
+  console.log(Message);
+}
+
 io.on("connection", (socket) => {
-  setTimeout(() => socket.emit("hello"), 5000);
+  socket.on("newMessage", ({ message }) => {
+    socket.broadcast.emit("messageNoti", {
+      message,
+      nickname: socket.nickname || "Anonymous",
+    });
+  });
+  socket.on("setNickname", ({ nickname }) => {
+    socket.nickname = nickname;
+  });
 });
