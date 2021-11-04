@@ -1,0 +1,25 @@
+@import "variables";
+@import "login";
+html {
+    height: 100%;
+}
+body {
+    background-color: $greyColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    .loginbox, .gameContainer {
+        display: none;
+    }
+    &.loggedOut {
+        .loginbox {
+            display: block;
+        }
+    }
+    &.loggedIn {
+        .gameContainer {
+            display: block;
+        }
+    }
+}

@@ -4,7 +4,8 @@
   "description": "soket.io, gulp",
   "main": "index.js",
   "scripts": {
-    "dev:server": "nodemon --exec babel-node src/server"
+    "dev:server": "nodemon --exec babel-node src/server --ignore assets/ --ignore static",
+    "build:assets": "gulp"
   },
   "repository": {
     "type": "git",
@@ -20,8 +21,17 @@
     "@babel/core": "^7.16.0",
     "@babel/node": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
+    "babelify": "^10.0.0",
+    "del": "^6.0.0",
     "express": "^4.17.1",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-bro": "^2.0.0",
+    "gulp-csso": "^4.0.1",
+    "gulp-sass": "^5.0.0",
     "morgan": "^1.10.0",
+    "node-sass": "^6.0.1",
+    "nodemailer": "^6.7.0",
     "nodemon": "^2.0.14",
     "prettier": "^2.4.1",
     "pug": "^3.0.2",
