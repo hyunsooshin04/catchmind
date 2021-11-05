@@ -1,25 +1,27 @@
 @import "variables";
 @import "login";
+
 html {
-    height: 100%;
+  height: 100%;
 }
 body {
-    background-color: $greyColor;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100%;
-    .loginbox, .gameContainer {
-        display: none;
+  background-color: $greyColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  .loginBox,
+  .gameContainer {
+    display: none;
+  }
+  &.loggedOut {
+    .loginBox {
+      display: block;
     }
-    &.loggedOut {
-        .loginbox {
-            display: block;
-        }
+  }
+  &.loggedIn {
+    .gameContainer {
+      display: block;
     }
-    &.loggedIn {
-        .gameContainer {
-            display: block;
-        }
-    }
+  }
 }

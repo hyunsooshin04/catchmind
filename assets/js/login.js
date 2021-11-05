@@ -1,20 +1,19 @@
-import events from "../../src/events";
+import { initSockets } from "./sockets";
 
 const body = document.querySelector("body");
 const loginForm = document.getElementById("jsLogin");
+
 const LOGGED_OUT = "loggedOut";
 const LOGGED_IN = "loggedIn";
 const NICKNAME = "nickname";
 
-const nickname = localStorage.getItem(NICKNAME);
-
-console.log(window.events);
-
 const logIn = (nickname) => {
   const socket = io("/");
-  socket.emit(events, { nickname });
+  socket.emit(window.events.setNickname, { nickname });
+  initSockets(socket);
 };
 
+const nickname = localStorage.getItem(NICKNAME);
 if (nickname === null) {
   body.className = LOGGED_OUT;
 } else {
@@ -22,11 +21,11 @@ if (nickname === null) {
   logIn(nickname);
 }
 
-const handleFormSubmit = (e) => {
-  e.preventDefault();
+const handleFormSubmit = (event) => {
+  event.preventDefault();
   const input = loginForm.querySelector("input");
   localStorage.setItem(NICKNAME, input.value);
-  input.value = "";
+  body.className = LOGGED_IN;
   logIn(input.value);
 };
 
