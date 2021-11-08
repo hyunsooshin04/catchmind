@@ -1,22 +1,22 @@
 {
   "name": "catchmind",
   "version": "1.0.0",
-  "description": "soket.io, gulp",
+  "description": "socket.io, gulp",
   "main": "index.js",
   "scripts": {
-    "dev:server": "nodemon --exec babel-node src/server --ignore assets/ --ignore static",
+    "dev:server": "nodemon --exec babel-node src/server --ignore assets/ --ignore src/static/",
     "build:assets": "gulp"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hyunsoosun/catchmind.git"
+    "url": "git+https://github.com/cheonyeji/catchmind.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hyunsoosun/catchmind/issues"
+    "url": "https://github.com/cheonyeji/catchmind/issues"
   },
-  "homepage": "https://github.com/hyunsoosun/catchmind#readme",
+  "homepage": "https://github.com/cheonyeji/catchmind#readme",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@babel/node": "^7.16.0",
@@ -31,9 +31,7 @@
     "gulp-sass": "^5.0.0",
     "morgan": "^1.10.0",
     "node-sass": "^6.0.1",
-    "nodemailer": "^6.7.0",
     "nodemon": "^2.0.14",
-    "prettier": "^2.4.1",
     "pug": "^3.0.2",
     "socket.io": "^4.3.1"
   },

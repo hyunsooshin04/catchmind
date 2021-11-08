@@ -2,16 +2,12 @@ import gulp from "gulp";
 import gulpSass from "gulp-sass";
 import nodeSass from "node-sass";
 import autoPrefixer from "gulp-autoprefixer";
-import minifyCss from "gulp-csso";
+import minifyCSS from "gulp-csso";
 import del from "del";
 import bro from "gulp-bro";
 import babel from "babelify";
 
 const sass = gulpSass(nodeSass);
-
-function clean() {
-  return del(["src/static"]);
-}
 
 function styles() {
   return gulp
@@ -22,13 +18,8 @@ function styles() {
         cascade: false,
       })
     )
-    .pipe(minifyCss())
+    .pipe(minifyCSS())
     .pipe(gulp.dest("src/static/styles"));
-}
-
-function watchFiles() {
-  gulp.watch("assets/scss/**/*.scss", styles);
-  gulp.watch("assets/js/**/*.js", js);
 }
 
 function js() {
@@ -44,6 +35,15 @@ function js() {
       })
     )
     .pipe(gulp.dest("src/static/js"));
+}
+
+function watchFiles() {
+  gulp.watch("assets/scss/**/*.scss", styles);
+  gulp.watch("assets/js/**/*.js", js);
+}
+
+function clean() {
+  return del(["src/static"]);
 }
 
 const dev = gulp.series([clean, styles, js, watchFiles]);

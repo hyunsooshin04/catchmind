@@ -1,2 +1,2 @@
 # catchmind
- soket.io, gulp
+ socket.io, gulp

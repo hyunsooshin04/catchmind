@@ -7,13 +7,14 @@ const LOGGED_OUT = "loggedOut";
 const LOGGED_IN = "loggedIn";
 const NICKNAME = "nickname";
 
+const nickname = localStorage.getItem(NICKNAME);
+
 const logIn = (nickname) => {
   const socket = io("/");
   socket.emit(window.events.setNickname, { nickname });
   initSockets(socket);
 };
 
-const nickname = localStorage.getItem(NICKNAME);
 if (nickname === null) {
   body.className = LOGGED_OUT;
 } else {
@@ -24,9 +25,10 @@ if (nickname === null) {
 const handleFormSubmit = (event) => {
   event.preventDefault();
   const input = loginForm.querySelector("input");
-  localStorage.setItem(NICKNAME, input.value);
+  const { value } = input;
+  localStorage.setItem(NICKNAME, value);
   body.className = LOGGED_IN;
-  logIn(input.value);
+  logIn(value);
 };
 
 if (loginForm) {
